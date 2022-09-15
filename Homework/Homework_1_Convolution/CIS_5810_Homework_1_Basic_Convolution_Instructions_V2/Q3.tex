@@ -1,0 +1,77 @@
+\section{Kernel Estimation (2 points)}
+
+Recall the special case of convolution discussed in class: The Impulse function. Using an impulse function, it is possible to 'shift' (and sometimes also 'scale') an image in a particular direction.\\
+\\For example, when the following image 
+\begin{equation}
+I = 
+	\begin{bmatrix}
+    		     a & b & c \\
+    		     d & e & f \\
+    		     g & h & i 
+	   		   \end{bmatrix}
+\end{equation}
+is convolved with the kernel, 
+\begin{equation}
+f = 
+	\begin{bmatrix}
+    		     1 & 0 & 0 \\
+    		     0 & 0 & 0 \\
+    		     0 & 0 & 0 
+	   		   \end{bmatrix}
+\end{equation}
+it results in the output:
+\begin{equation}
+g = 
+	\begin{bmatrix}
+    		     e & f & 0 \\
+    		     h & i & 0 \\
+    		     0 & 0 & 0 
+	   		   \end{bmatrix}
+\end{equation}\\
+\\Another useful trick to keep in mind is the decomposition of a convolution kernel into scaled impulse kernels. For example, a kernel
+\begin{equation}
+f = 
+	\begin{bmatrix}
+    		     0 & 0 & 7 \\
+    		     0 & 0 & 0 \\
+    		     0 & 4 & 0 
+	   		   \end{bmatrix}
+\end{equation}
+can be decomposed into
+\begin{center}
+	$f_{1}$ = $7*\begin{bmatrix}
+    		     0 & 0 & 1 \\
+    		     0 & 0 & 0 \\
+    		     0 & 0 & 0 
+	   		   \end{bmatrix}$ \text{and}
+    $f_{2}$ =   $4*\begin{bmatrix}
+    		     0 & 0 & 0 \\
+    		     0 & 0 & 0 \\
+    		     0 & 1 & 0 
+	   		   \end{bmatrix}$
+\end{center}
+\hspace{6pt}
+\begin{itemize}
+\item \textbf{Question:} Using the two tricks listed above, estimate the kernel $f$ \textbf{by hand} which when convolved with an image 
+\begin{equation}
+I = 
+	\begin{bmatrix}
+    		     1 & 5 & 2 \\
+    		     7 & 8 & 6 \\
+    		     3 & 9 & 4 
+	   		   \end{bmatrix}
+\end{equation}
+results in the output image
+\begin{equation}
+g = 
+	\begin{bmatrix}
+    		     29 & 43 & 10 \\
+    		     62 & 52 & 30 \\
+    		     15 & 45 & 20 
+	   		   \end{bmatrix}
+\end{equation}
+\end{itemize}
+\textit{Hint: Look at the relationship between corresponding elements in g and I.}
+
+
+

@@ -1,0 +1,28 @@
+\section{Edge Moving (2 points)}
+Object Recognition is one of the most popular applications in Computer Vision. The goal is to identify the object based on a template or a specific pattern of the object that has been learnt from a training dataset. Suppose we have a standard template for a "barrel" which is a $3 \times 3$ rectangle block in a $4 \times 4$ image. We also have an input $4 \times 4$ query image. Now, your task is to verify if the image in question contains a barrel. After preprocessing and feature extraction, the query image is simplified as $I_{Q}$ and the barrel template is $I_{T}$.
+\[ I_{Q}=  \begin{bmatrix}
+1 & 1 & 1 & 0 \\
+1 & 1 & 1 & 0 \\
+1 & 1 & 1 & 0 \\
+0 & 0 & 0 & 0 \end{bmatrix}, I_{T}= \begin{bmatrix}
+0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 1 \\
+0 & 1 & 1 & 1 \end{bmatrix} \]
+Instinctively, the human eye can automatically detect a potential barrel in the top left corner of the query image but a computer can't do that right away. Basically, if the computer finds that the difference between query image's features and the template's features are minute, it will prompt with high confidence: 'Aha! I have found a barrel in the image'. However, in our circumstance, if we directly compute the pixel wise distance $D$ between $I_{Q}$ and $I_{T}$ where
+\begin{eqnarray}
+D(I_{Q}, I_{T}) = \sum_{i, j}(I_{Q}(i, j)- I_{T}(i, j))^2
+\end{eqnarray}
+we get $D = 10$ which implies that there's a huge difference between the query image and our template. To fix this problem, we can utilize the power of the convolution.
+Let's define the 'mean shape' image $I_M$ which is the blurred version of $I_Q$ and $I_T$. 
+\[I_{M}= \begin{bmatrix}
+0.25 & 0.5 & 0.5 & 0.25 \\
+0.5 & 1 & 1 & 0.5 \\
+0.5 & 1 & 1 & 0.5 \\
+0.25 & 0.5 & 0.5 & 0.25 \end{bmatrix} \]
+
+\begin{itemize}
+\item \textbf{Question 3.1:} Compute two $3 \times 3$ convolution kernels $f_1$, $f_2$ \textbf{by hand} such that $I_Q \otimes f_1 = I_M$ and $I_T \otimes f_2 = I_M$ where $\otimes$ denotes the convolution operation. (Assume zero-padding)
+
+\item \textbf{Question 3.2:} For a convolution kernel $f=(f_1 + f_2) / 2$, we define $I_{Q}' = I_{Q} \otimes f$ and $I_{T}' = I_{T} \otimes f$. Compute $I_{Q}'$, $I_{T}'$ and $D(I_{Q}', I_{T}')$ \textbf{by hand}. Compare it with $D(I_{Q}, I_{T})$ and briefly explain what you find. 
+\end{itemize}

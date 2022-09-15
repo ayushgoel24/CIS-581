@@ -1,0 +1,28 @@
+\section{Boundary Conditions (2 points)}
+
+\\For this problem, we will use the following $3 \times 3$ image:
+\begin{equation}
+I = 
+	\begin{bmatrix}
+	1 & 1 & 1 \\
+    1 & 3 & 2 \\ 
+    1 & 1 & 1 \\
+	\end{bmatrix}
+\end{equation}
+You are given 2-D convolution filter:
+\begin{equation}
+f = 
+	\frac{1}{9}\begin{bmatrix}
+	1 & 1 & 1 \\
+    1 & 1 & 1 \\ 
+    1 & 1 & 1 \\
+	\end{bmatrix}
+\end{equation}
+
+\noindent Let \( g = I \underbrace{\otimes f\cdots \otimes f}_{\textrm{infinity times}}\). The output image $g$ has the same size as $I$.\\
+
+
+\begin{itemize}
+\item \textbf{Question 5.1:} When zero-padding is used, what's the output image $g$. (Give the verification process)
+%\item \textbf{Question 5.1:} when padding with replication is used, what's the output image $g$.
+\end{itemize}
